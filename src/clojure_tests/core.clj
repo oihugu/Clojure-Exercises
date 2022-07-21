@@ -32,4 +32,21 @@
                                              (* (Integer. (get ls_segundo_produto 1))
                                                 (Float. (get ls_segundo_produto 2))))))
 
-;; 
+
+;; beecrowd | 1015 | Distância Entre Dois Pontos
+(require '[clojure.string :as str])
+(def p1 (str/split (read-line) #" "))
+(def p2 (str/split (read-line) #" "))
+(def distancia (Math/sqrt 
+                (+ 
+                 (Math/pow (- 
+                     (Float. (get p2 0)) 
+                     (Float. (get p1 0)))
+                     2)
+                   
+                 (Math/pow (-
+                     (Float. (get p2 1))
+                     (Float. (get p1 1)))
+                     2)
+                 )))
+(println (format "%.4f" distancia))
