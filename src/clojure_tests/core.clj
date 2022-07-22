@@ -50,3 +50,21 @@
                      2)
                  )))
 (println (format "%.4f" distancia))
+
+
+;; Find Minimum Length Subarray
+(defn findMinimumLengthSubarray [arr k] 
+
+  (defn haveNDistincts [subarr]
+    (if (= k (count (into #{} subarr)))
+      true
+      false))
+
+  (defn nsub [n]
+    (if (contains? (into #{} (map haveNDistincts (partition n 1 arr))) true) n nil))
+
+  (def mapResult (remove nil? (map nsub (range (count arr)))))
+  (if (= [] mapResult) -1 (apply min mapResult)))
+
+(findMinimumLengthSubarray [2 2] 3)
+
